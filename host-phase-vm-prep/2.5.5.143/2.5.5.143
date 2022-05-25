@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -exo pipefail
+
+echo "host phase vm prep 2.5.5.143"

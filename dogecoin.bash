@@ -8,4 +8,5 @@ export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
 export CXXFLAGS="-I/usr/local/opt/openssl@1.1/include"
 ./autogen.sh
 ./configure --disable-wallet --without-gui
-time make -j $1
+[[ -z "${1}" ]] && THREADS=12 || THREADS="${1}"
+time make -j "${THREADS}"

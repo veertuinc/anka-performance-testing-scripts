@@ -10,4 +10,4 @@ set -eo pipefail
 # ./configure --disable-wallet --without-gui
 # [[ -z "${1}" ]] && THREADS=12 || THREADS="${1}"
 # make -j "${THREADS}"
-echo 123
+echo 123 >&2

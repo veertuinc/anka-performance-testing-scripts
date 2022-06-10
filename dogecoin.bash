@@ -15,6 +15,6 @@ if [[ "${1}" == "build" ]]; then
   export CXXFLAGS="-I/usr/local/opt/openssl@1.1/include"
   ./autogen.sh
   ./configure --disable-wallet --without-gui
-  [[ -z "${1}" ]] && THREADS=2 || THREADS="${1}"
+  [[ -z "${1}" ]] && THREADS=6 || THREADS="${1}"
   make -j "${THREADS}"
 fi

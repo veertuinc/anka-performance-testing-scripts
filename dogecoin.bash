@@ -2,7 +2,7 @@
 set -exo pipefail
 if [[ $(sw_vers) =~ 10\.14 ]]; then
   >&2 echo "10.14 has issues with JDK being needed and brew will not install required packages properly... skipping" 
-  exit 1
+  exit
 fi
 if [[ "${1}" == "prep" ]]; then
   brew install automake libtool boost miniupnpc openssl pkg-config protobuf qt5 libevent berkeley-db

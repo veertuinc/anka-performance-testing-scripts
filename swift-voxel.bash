@@ -5,8 +5,6 @@ if [[ "${*}" =~ "prep" ]]; then
 fi
 if [[ "${*}" =~ "build" ]]; then
   cd SwiftVoxel
-  sleep 2
-  exit
   xcodebuild -workspace SwiftVoxel.xcworkspace -scheme SwiftVoxel -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=15.5' build
   SIMID=$(xcrun simctl create test "com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro" com.apple.CoreSimulator.SimRuntime.iOS-15-5)
   xcron simctl boot "${SIMID}"

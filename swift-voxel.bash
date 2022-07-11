@@ -2,6 +2,7 @@
 set -exo pipefail
 if [[ "${*}" =~ "prep" ]]; then
   [[ ! -d SwiftVoxel ]] && git clone https://github.com/claygarrett/SwiftVoxel.git
+  true
 fi
 if [[ "${*}" =~ "build" ]]; then
   xcodebuild -workspace SwiftVoxel.xcworkspace -scheme SwiftVoxel -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=15.5' build
@@ -14,3 +15,4 @@ if [[ "${*}" =~ "build" ]]; then
   xcrun simctl launch test "${BUNDLE_ID}"
   sleep 300 # Sleep 5 minutes to make sure the VM doesn't crash
 fi
+true

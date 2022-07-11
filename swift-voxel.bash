@@ -2,7 +2,6 @@
 set -exo pipefail
 if [[ "${*}" =~ "prep" ]]; then
   [[ ! -d SwiftVoxel ]] && git clone https://github.com/claygarrett/SwiftVoxel.git
-  true
 fi
 if [[ "${*}" =~ "build" ]]; then
   cd SwiftVoxel
@@ -16,4 +15,3 @@ if [[ "${*}" =~ "build" ]]; then
   xcrun simctl launch test "${BUNDLE_ID}"
   sleep 300 # Sleep 5 minutes to make sure the VM doesn't crash
 fi
-true

@@ -5,8 +5,8 @@ if [[ "${*}" =~ "prep" ]]; then
 fi
 if [[ "${*}" =~ "build" ]]; then
   cd SwiftVoxel
-  xcodebuild -workspace SwiftVoxel.xcworkspace -derivedDataPath /tmp/ -scheme SwiftVoxel -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=15.5' build
-  SIMID=$(xcrun simctl create test "com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro" com.apple.CoreSimulator.SimRuntime.iOS-15-5)
+  xcodebuild -workspace SwiftVoxel.xcworkspace -derivedDataPath /tmp/ -scheme SwiftVoxel -destination 'platform=iOS Simulator,name=iPhone 13 Pro' build
+  SIMID=$(xcrun simctl create test "com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro")
   xcrun simctl boot "${SIMID}"
   sleep 60
   open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app

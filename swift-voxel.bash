@@ -9,7 +9,7 @@ if [[ "${*}" =~ "build" ]]; then
   xcodebuild -workspace SwiftVoxel.xcworkspace -derivedDataPath /tmp/ -scheme SwiftVoxel -destination 'platform=iOS Simulator,name=iPhone 13 Pro' build
   SIMID=$(xcrun simctl create test "com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro")
   xcrun simctl boot "${SIMID}"
-  sleep 80
+  sleep 120
   open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
   xcrun simctl install test /tmp/Build/Products/Debug-iphonesimulator/SwiftVoxel.app
   BUNDLE_ID="$(defaults read /tmp/Build/Products/Debug-iphonesimulator/SwiftVoxel.app/Info.plist CFBundleIdentifier)"

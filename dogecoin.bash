@@ -6,10 +6,13 @@ if [[ $(sw_vers) =~ 10\.14 ]]; then
 fi
 cd "${HOME}"
 if [[ "${1}" == "prep" ]]; then
+  exit
   brew install automake libtool boost miniupnpc openssl pkg-config protobuf qt5 libevent berkeley-db
   git clone https://github.com/dogecoin/dogecoin -b 1.14-maint
 fi
 if [[ "${1}" == "build" ]]; then
+  sleep 10
+  exit
   cd dogecoin
   export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
   export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"

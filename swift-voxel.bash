@@ -6,7 +6,7 @@ if [[ "${*}" =~ "prep" ]]; then
 fi
 if [[ "${*}" =~ "build" ]]; then
   cd SwiftVoxel
-  SIM_VER="$(xcrun simctl list --json devices available | grep name | grep Pro | head -1 | cut -d\" -f 4)"
+  SIM_VER="$(xcrun simctl list --json devices available | grep name | grep Pro | head -1 | cut -d'"' -f 4)"
   xcodebuild -workspace SwiftVoxel.xcworkspace -derivedDataPath /tmp/ -scheme SwiftVoxel -destination "platform=iOS Simulator,name=${SIM_VER}" build
   SIMID=$(xcrun simctl create test "com.apple.CoreSimulator.SimDeviceType.$(echo ${SIM_VER} | sed 's/ /-/g')")
   xcrun simctl boot "${SIMID}"

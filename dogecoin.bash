@@ -1,5 +1,6 @@
 #!/bin/bash
 set -exo pipefail
+export PATH="${PATH}:/opt/homebrew/bin" # arm brew support | configure: error: Need at least boost 1.60.0
 if [[ $(sw_vers) =~ 10\.14 ]]; then
   >&2 echo "10.14 has issues with JDK being needed and brew will not install required packages properly... skipping" 
   exit

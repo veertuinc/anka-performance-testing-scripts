@@ -11,11 +11,18 @@ if [[ "${1}" == "prep" ]]; then
 fi
 if [[ "${1}" == "build" ]]; then
   cd dogecoin
-  export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-  export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib -L$(brew --prefix)/lib"
-  export CXXFLAGS="-I/usr/local/opt/openssl@1.1/include -I$(brew --prefix)/include" # brew stuff needed for m1 homebrew
+  if [[ "$(arch)" == "arm64" ]]; then
+    export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+    export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib -L$(brew --prefix)/lib"
+    export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include -I$(brew --prefix)/include"
+    EXTRAS="--with-boost-libdir=$(brew --prefix)/lib"
+  else
+    export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+    export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+    export CXXFLAGS="-I/usr/local/opt/openssl@1.1/include"
+  fi
   ./autogen.sh
-  ./configure --disable-wallet --without-gui --with-boost-libdir="$(brew --prefix)/lib" # --with-boost-libdir= required for m1 homebrew
+  ./configure --disable-wallet --without-gui $EXTRAS
   [[ -z "${2}" ]] && THREADS="$(sysctl -n hw.ncpu)" || THREADS="${2}"
   make -j "${THREADS}"
 fi

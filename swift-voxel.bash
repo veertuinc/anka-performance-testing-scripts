@@ -6,7 +6,7 @@ if [[ "${*}" =~ "prep" ]]; then
 fi
 if [[ "${*}" =~ "build" ]]; then
   cd SwiftVoxel
-  xcrun simctl list --json devices available # fix a weird bug where xcrun simctl list --json devices available is empty the first run
+  xcrun simctl list --json devices available; sleep 20 # fix a weird bug where xcrun simctl list --json devices available is empty the first run
   SIM_VER="$(xcrun simctl list --json devices available | grep name | grep Pro | head -1 | cut -d'"' -f4)"
   xcodebuild -workspace SwiftVoxel.xcworkspace -derivedDataPath /tmp/ -scheme SwiftVoxel -destination "platform=iOS Simulator,name=${SIM_VER}" build
   SIMID=$(xcrun simctl create test "com.apple.CoreSimulator.SimDeviceType.$(echo ${SIM_VER} | sed 's/ /-/g')")

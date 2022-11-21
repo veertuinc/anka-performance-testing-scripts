@@ -2,7 +2,7 @@
 set -exo pipefail
 cd "${HOME}"
 if [[ "${1}" == "prep" ]]; then
-  git clone https://git.ffmpeg.org/ffmpeg.git
+  git clone https://github.com/FFmpeg/FFmpeg.git
 fi
 if [[ "${1}" == "build" ]]; then
   cd ffmpeg

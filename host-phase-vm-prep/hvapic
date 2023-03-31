@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -Eeo pipefail
+anka modify test set custom-variable hw.hvapic 1

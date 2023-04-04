@@ -66,10 +66,9 @@ for MODIFY_FILE in $(find ./host-phase-vm-prep/${ARCH} -type f -depth 1 | grep -
         anka cp ./${TEST} $VM_NAME:
         # Run prep steps in script
         : > log$VM_NAME # empty log file
-        # anka run $VM_NAME bash -c "GIT_SSL_NO_VERIFY=true ./${TEST} prep"
+        anka run $VM_NAME bash -c "GIT_SSL_NO_VERIFY=true ./${TEST} prep"
         { { {
-          time (sleep 5; echo "TESTiNG")
-          # anka run $VM_NAME bash -c "time GIT_SSL_NO_VERIFY=true ./${TEST} build 2>&1"
+          anka run $VM_NAME bash -c "time GIT_SSL_NO_VERIFY=true ./${TEST} build 2>&1"
         } 3>&- | tee -a log$VM_NAME >&3 3>&-
           exit ${PIPESTATUS}
         } 2>&1 | tee -a log$VM_NAME >&2 3>&-

@@ -2,7 +2,7 @@
 set -exo pipefail
 cd "${HOME}"
 if [[ "${*}" =~ "prep" ]]; then
-  [[ ! -d SwiftVoxel ]] && git clone https://github.com/claygarrett/SwiftVoxel.git
+  [[ ! -d SwiftVoxel ]] && git clone https://github.com/veertuinc/SwiftVoxel.git
 fi
 if [[ "${*}" =~ "build" ]]; then
   cd SwiftVoxel

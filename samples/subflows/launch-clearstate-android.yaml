@@ -1,6 +1,0 @@
-appId: org.wikipedia
----
-- launchApp:
-    clearState: true
-- assertVisible: "Continue"
-- assertVisible: "Skip"

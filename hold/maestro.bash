@@ -17,7 +17,7 @@ if [[ "${*}" =~ "build" ]]; then
   xcrun simctl boot "${SIMID}"
   sleep 120
   echo n | maestro download-samples
-  cd ./samples; unzip sample.zip
+  cd ./samples;unzip sample.zip
   open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
   xcrun --verbose simctl install Booted Wikipedia.app 2>&1
   export MAESTRO_DRIVER_STARTUP_TIMEOUT=60000000

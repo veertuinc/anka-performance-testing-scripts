@@ -5,7 +5,8 @@ if [[ "${*}" =~ "prep" ]]; then
   brew install xcodesorg/made/xcodes
   brew tap mobile-dev-inc/tap
   brew install maestro
-  xcodes runtimes install "iOS 17.5"
+  sudo rm -rfv ~/Library/Developer/CoreSimulator/* || true
+  sudo xcodes runtimes install "iOS 17.5"
 fi
 if [[ "${*}" =~ "build" ]]; then
   DEVICE_ID=$(sh -c "xcrun simctl create 'iPhone 15 Pro Max' 'iPhone 15 Pro Max' 'com.apple.CoreSimulator.SimRuntime.iOS-17-5'" | tr -d '\r')

@@ -19,7 +19,7 @@ if [[ "${*}" =~ "build" ]]; then
   echo n | maestro download-samples
   cd ./samples; unzip sample.zip
   open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
-  xcrun --verbose simctl install Booted Wikipedia.app
+  xcrun --verbose simctl install Booted Wikipedia.app 2>&1
   export MAESTRO_DRIVER_STARTUP_TIMEOUT=60000000
-  maestro --verbose test ios-flow.yaml
+  maestro --verbose test ios-flow.yaml 2>&1
 fi

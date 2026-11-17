@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-set -exo pipefail
-anka modify test set custom-variable hw.hvapic 1
+set -euo pipefail
+vm_name="${1:?VM name required}"
+anka modify "${vm_name}" set custom-variable hw.hvapic 1

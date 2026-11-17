@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-set -exo pipefail
+set -euo pipefail
 cd /tmp
-# if [[ "${*}" =~ "prep" ]]; then
-# fi
-if [[ "${*}" =~ "build" ]]; then
-  git clone https://github.com/torvalds/linux.git
+if [[ "${1:-}" == "build" ]]; then
+  rm -rf linux
+  git clone --depth 1 --single-branch https://github.com/torvalds/linux.git linux
 fi
